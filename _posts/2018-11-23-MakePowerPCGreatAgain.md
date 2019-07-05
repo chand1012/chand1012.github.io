@@ -27,4 +27,4 @@ All were benchmarked with the sysbench CPU prime test, with all their threads us
 
 What did I learn from this? Well I learned that I now have a 20lbs paperweight under my desk. I learned that this is not an easy machine to tinker with, even after the easy process of getting Linux running. And finally, I learned that you can't just take some code designed for one machine and compile and run it on another. I could've Googled all this. I think I'm putting the PowerMac on hold for now, as I actually know how to get software working on my Raspberry Pi and the server I mentioned. At least those are practical.
 
-Original Post found [here](http://blog.chand1012.net/2018/11/make-powerpc-great-again.html).
+Original Post found [here](http://chand1012.blogspot.com/2018/11/make-powerpc-great-again.html).

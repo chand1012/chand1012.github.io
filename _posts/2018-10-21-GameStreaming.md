@@ -42,4 +42,4 @@ That is the biggest pro and one of the main reasons to consider Rainway, its sim
  
 That is my complete knowledge (at the moment anyway) of how to procrastinate anywhere with video games. Since the release of Black Ops 4 and since I got NVIDIA GAMESTREAM up and running I have been wasting a lot of time in my University's library not doing homework. Let's hope my grades don't show it.
 
-Original blog post [here](http://blog.chand1012.net/2018/10/how-to-stream-any-game-on-any-console.html).
+Original blog post [here](http://chand1012.blogspot.com/2018/10/how-to-stream-any-game-on-any-console.html).
