@@ -21,6 +21,7 @@ else:
     thing = "Hello world!"
 
 ```
+
 In most low-level or compiled languages, Golang included, this is horribly taboo. This is because Python is a dynamically typed language, as most interpreted languages are. This means that the varaibles in the program do not have to hold their type, whether that be a string, a number (float or integer), or a array/list. When you declare a varable in Go, while you can delcare a variable without delaring its type, the type must remain the same for the duration of the scope, like so:
 
 ```Go
@@ -39,6 +40,7 @@ func main(){
     }
 }
 ```
+
 This will execute, but that is because the variable `i` is used in two different scopes. The variable used in the loop was defined at the start of the scope, you would have to keep it as whatever that type was. For example:
 
 ```Go
@@ -53,7 +55,7 @@ var (
 func main {
     // This could have been definied like in the previous example
     // but it is better practice to predefine your variables.
-    things = []string{"one", "two", "three"} 
+    things = []string{"one", "two", "three"}
     for i = 0; i<4; i++{
         fmt.Println(i)
         fmt.Println(things[i])
@@ -108,11 +110,12 @@ func main() {
 }
 ```
 
-This allows the variable in the `main` scope to be changed by the `salaryhike` function. 
+This allows the variable in the `main` scope to be changed by the `salaryhike` function.
 
 ## *Go*routines and Channels
 
 One thing that Python does not include in its standard library is a system for multithreading or any sort of coroutines. Go, which does not include much in its standard library, includes a way to multithread your programs and to correctly funnel data between them. Those two things are called goroutines and channels respectively. Goroutines, called coroutines in literally every other language, are an easy way to asynchronously execute a function or a set of functions. All you have to do is put the keyword `go` before calling the function to start execution of the function while starting execution of the next command. For example:
+
 ```Go
 package main
 import "fmt"
@@ -133,6 +136,7 @@ func main() {
 ```
 
 This will quickly and effectively allow for coroutines in your programs. If you have to execute the same function a few times, all you do is call `go` a few times with the function in a loop like so:
+
 ```Go
 package main
 import "fmt"
@@ -156,6 +160,7 @@ func main() {
 ```
 
 Now, it is **really** bad practice as a developer to have multiple threads write to the same variable at the same time. At best, the data gets a little corrupted but the program keeps chugging. At worst, one of the threads has a `segmentation fault`, or an error in memory reads and writes, which will crash the entire program. Go remedies this by providing channels to funnel data between the threads. When you request a variable from a channel, it gets the oldest value added and continues your program. The channel isn't ready to read or write, execution will pause until the channel is complete being written to or until the channel is ready to send your data to a variable. A nice little website called [Go By Example](https://gobyexample.com) has a better way of explaining basically everything on this page, and I highly reccomend you go and check out that site for more Go stuff, but for now I am going to borrow the part the site about using channels as a tool to better organize your goroutines. First I will show you his example from [here](https://gobyexample.com/channel-synchronization) and explain a little better after you look over it:
+
 ```Go
 package main
 
@@ -163,7 +168,7 @@ import "fmt"
 import "time"
 
 func worker(done chan bool) {
-    fmt.Print("working...")
+    fmt.Println("working...")
     time.Sleep(time.Second)
     fmt.Println("done")
 
@@ -179,4 +184,39 @@ func main() {
 }
 ```
 
-By default, channels will pause your program until they have data to read from, in this case that data is a boolean value. This is considered the "old" way. The "new" and "reccomended" way (which I myself follow) uses the `sync` module.
+By default, channels will pause your program until they have data to read from, in this case that data is a boolean value. This is considered the "old" way. The "new" and "recommended" way (which I myself follow) uses the `sync` module. Instead of having a seperate channel for the status of the thread, you pass a pointer to a variable of the type `sync.WaitGroup` into the worker and defer the command `wg.Done()` like so:
+
+```Go
+package main
+
+import (
+    "fmt"
+    "strconv"
+    "sync"
+    "time"
+)
+
+func worker(wg *sync.WaitGroup, t int) {
+    defer wg.Done()
+    fmt.Println(strconv.Itoa(t) + " :Working...")
+    time.Sleep(time.Second * time.Duration(int64(t+1)))
+    fmt.Println(strconv.Itoa(t) + " :Done.")
+}
+
+func main() {
+    var wg sync.WaitGroup
+
+    for i := 0; i < 5; i++ {
+        wg.Add(1)
+        go worker(&wg, i)
+    }
+
+    wg.Wait()
+}
+```
+
+You can spawn as many goroutines as you would like regardless of what method you use. Depending on the computational intensity and requirements of the task at hand, it may be more efficient to use a few goroutines, or you could be like [my Discord bot](https://github.com/chand1012/Discord-Quick-Meme) and spawn a routine for every server on the bot. It does this for two different tasks. The way the library [DiscordGo](https://github.com/bwmarrin/discordgo) was designed was to spawn a coroutine every time a request was made to the server. The other uses I have for the routines are related to post and data collection. The bot gets random posts off of Reddit and spits them into the Discord channel that made the request. The other function that spawns a thread for each server runs during the initialization sequence of the bot. For each server (or "Guild" as they are referred to in the manual), the goroutine will loop through every single text channel, get its name and ID, and then store that name and ID in the RAM of the system for fast access. This cut the latency to find the name of a channel on a respective server down from about 300ms down to around 1ms. Even with a routine on every server, it still takes around 6.5 seconds to get all of the names and IDs and store them to RAM, but that is loads better than taking 30 seconds to build the cache.
+
+## Conclusion
+
+Go is very powerful and leagues faster than really any Python script. Now is Go going to replace all of my Python scripts and still allow me to prototype in minutes? No. I will still use both where I see fit, but I will use Go where speed is of the essence and if the system is strapped for resources. Both languages have their place, and it my projects they are both two of my most powerful tools.
