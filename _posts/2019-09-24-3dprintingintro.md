@@ -23,4 +23,6 @@ To remedy this, I went and bought [this](https://www.amazon.com/gp/product/B079J
 
 ![metalbowden](https://github.com/chand1012/chand1012.github.io/blob/master/images/metalbowden.jpg?raw=true)
 
-After it's replacement the printer ran just fine, making beautiful prints. Well it did, until the spring lost tension. For the longest time I have just been shimming the spring but I recently found that Creality sells the extruder springs on Bang Good, which can be found here. I'll update this post when I install the new ones.
+After it's replacement the printer ran just fine, making beautiful prints. Well it did, until the spring lost tension. For the longest time I have just been shimming the spring but I recently found that Creality sells the extruder springs on [Bang Good](https://www.banggood.com/10pcspack-Creality-3D-Extruder-Spring-For-Ender-3-Ender-5-CR-10-CR-10S-PRO-CR-X-3D-Printer-p-1452233.html?rmmds=search&cur_warehouse=CN), which I ordered. After fixing them new springs and recalibrating the printer, its prints beautifully again. I also recently attached a BLTouch using [this]() mount, and forked the Marlin firmware for this change [here](https://github.com/chand1012/Marlin-Ender3-BLTOUCHv3/).
+
+Anyway, that is the intro to 3D Printing. I will make another post with more detail on more advanced strategies at some point, but until then, I would reccomend looking up videos by [CNC Kitchen](https://www.youtube.com/channel/UCiczXOhGpvoQGhOL16EZiTg) and [Thomas Sanladerer](https://www.youtube.com/user/ThomasSanladerer) for anything about 3D Printing.
