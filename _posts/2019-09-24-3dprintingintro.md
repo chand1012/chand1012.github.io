@@ -17,7 +17,7 @@ The Ender 3 comes partially disassembled in the box, taking an hour or two to as
 
 One of the more important things about 3D printing that many people overlook in the beginning is a properly leveled bed. Without a properly leveled and adhered bed your prints will not stick and begin to either shift or clump up, ruining your print. Most - if not all - printers cannot detect when a print is not adhering to the bed and you will waste a lot of time and material allowing your printer to make a clump of plastic. Another important thing is the extruder. It controls the rate at which the molten plastic is pushed out of the nozzle. This is by far the biggest flaw of the Ender 3, as at least in my machine, the Bowden-style extruder is going to be the first thing to fail. You think at first you have a clog, then you change the nozzle and nothing changes so you push the material manually and it works and then you go through literally every possible outcome until you realize that the plastic Bowden extruder arm cracked into two.
 
-<img src="https://github.com/chand1012/chand1012.github.io/blob/master/images/bowdencrack.jpg?raw=true" width=427px height=320px>
+![bowdencraft](https://github.com/chand1012/chand1012.github.io/blob/master/images/bowdencrack.jpg?raw=true”)
 
 To remedy this, I went and bought [this](https://www.amazon.com/gp/product/B079JZ374W/ref=oh_aui_search_asin_title?ie=UTF8&psc=1), an aluminum replacement for the Bowden assembly. This aluminum assembly is significantly more durable and better made than the one that comes with the machine. This is what mine looked like after installation:
 
