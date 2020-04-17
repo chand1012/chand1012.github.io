@@ -22,7 +22,7 @@ else:
 
 ```
 
-In most low-level or compiled languages, Golang included, this is horribly taboo. This is because Python is a dynamically typed language, as most interpreted languages are. This means that the varaibles in the program do not have to hold their type, whether that be a string, a number (float or integer), or a array/list. When you declare a varable in Go, while you can delcare a variable without delaring its type, the type must remain the same for the duration of the scope, like so:
+In most low-level or compiled languages, Golang included, this is horribly taboo. This is because Python is a dynamically typed language, as most interpreted languages are. This is because variables can hold all types, which is why they are called dynamic. When you declare a varable in Go, while you can delcare a variable without delaring its type, as the compiler can differntiate what the type is supposed to be, the type must remain the same for the duration of the scope, like so:
 
 ```Go
 package main
@@ -114,7 +114,7 @@ This allows the variable in the `main` scope to be changed by the `salaryhike` f
 
 ## *Go*routines and Channels
 
-One thing that Python does not include in its standard library is a system for multithreading or any sort of coroutines. Go, which does not include much in its standard library, includes a way to multithread your programs and to correctly funnel data between them. Those two things are called goroutines and channels respectively. Goroutines, called coroutines in literally every other language, are an easy way to asynchronously execute a function or a set of functions. All you have to do is put the keyword `go` before calling the function to start execution of the function while starting execution of the next command. For example:
+One thing that Python has in its standard library is a system for multithreading, though its not very intuitive. Go includes an intuitive way to multithread your programs and to correctly funnel data between them. Those two things are called goroutines and channels respectively. Goroutines, called coroutines in literally every other language, are an easy way to asynchronously execute a function or a set of functions. All you have to do is put the keyword `go` before calling the function to start execution of the function while starting execution of the next command. For example:
 
 ```Go
 package main
@@ -219,4 +219,4 @@ You can spawn as many goroutines as you would like regardless of what method you
 
 ## Conclusion
 
-Go is very powerful and leagues faster than really any Python script. Now is Go going to replace all of my Python scripts and still allow me to prototype in minutes? No. I will still use both where I see fit, but I will use Go where speed is of the essence and if the system is strapped for resources. Both languages have their place, and it my projects they are both two of my most powerful tools.
+Go is very powerful and leagues faster than really any Python script. Now is Go going to replace all of my Python scripts and still allow me to prototype in minutes? No. I will still use both where I see fit, but I will use Go where speed is of the essence and if the system is strapped for resources. Both languages have their place, and in my projects they are both two of my most powerful tools.
