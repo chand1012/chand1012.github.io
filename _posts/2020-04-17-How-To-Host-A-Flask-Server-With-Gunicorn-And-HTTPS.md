@@ -74,7 +74,7 @@ This will start the app on localhost only with the port 8080. If you wish to run
 gunicorn -w 2 -b 127.0.0.1:8080 app:app 
 ```
 
-[Gunicorn's Documentation](https://docs.gunicorn.org/en/stable/settings.html#workers) recommends that you use between two and four workers per core on your VPS.
+[Gunicorn's Documentation](https://docs.gunicorn.org/en/stable/settings.html#workers) recommends that you use between two and four workers per core on your server.
 
 Use `Ctrl+C` to exit the application.
 
@@ -109,7 +109,7 @@ Paste the following configuration in to the file:
     WantedBy=multi-user.target
 
 
-This will enable launch of the app on boot of your VPS using `systemd`. NGINX is already configured to do this when you install it. Now we need the `start.sh` file. Run the following to create the file:
+This will enable launch of the app on boot of your server using `systemd`. NGINX is already configured to do this when you install it. Now we need the `start.sh` file. Run the following to create the file:
 
 ```
 nano /var/www/flask/hello-world/start.sh
@@ -132,7 +132,7 @@ Then allow the file to be executable with:
 chmod +x /var/www/flask/hello-world/start.sh
 ```
 
-In the last line of the `start.sh` file, the number `2` can be replaced with 2-4 times the number of cores on your VPS. Finally, to enable startup of the application on boot, execute the following:
+In the last line of the `start.sh` file, the number `2` can be replaced with 2-4 times the number of cores on your server. Finally, to enable startup of the application on boot, execute the following:
 
 ```
 systemctl enable flask
@@ -227,6 +227,6 @@ Then paste the following config into your file:
     }
 
 
-Before closing and saving, replace `example.com` with the IP Address of your VPS, or if you have an A record DNS pointing to your VPS's IP, use that instead. After this is complete, restart NGINX with `systemctl restart nginx`. 
+Before closing and saving, replace `example.com` with the IP Address of your server, or if you have an A record DNS pointing to your server's IP, use that instead. After this is complete, restart NGINX with `systemctl restart nginx`. 
 
 There will be a warning that comes up on your browser saying that your website is dangerous, this is just warning you that the certificate was not signed by a real authority and can be ignored. You now have a functioning reverse proxy with HTTPS for your Flask server. 
