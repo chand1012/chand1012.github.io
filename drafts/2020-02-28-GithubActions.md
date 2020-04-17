@@ -17,7 +17,7 @@ Around August of 2019, I made a Jenkins server. Jenkins is great and all, but yo
 
 ## Ok, you talk a lot. What are GitHub Actions?
 
-GitHub Actions are a simple and easy way to build and distribute your projects that need compiled or tested. Actions has a "store", unlike the other cloud-hosted competetors but like Jenkins, where you can install different modules into your build scripts and workflows to speed up the process of either compiling your programs or just writing your build scripts. GitHub refers to the machines that run your build scripts as "runners" and there are two types: hosted and self-hosted. Hosted are the runners that GitHub provides. There is a good summary on them [here](https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners), but the main things you need to know are these: each runner gets two vcores and 7GB of RAM and you get 14GB of SSD storage. You can pick between your different operating systems, but the biggest thing you should know is this: Its free if your project is open source. Free CI/CD on any project I'm willing to share? Count me in!
+GitHub Actions are a simple and easy way to build and distribute your projects that need compiled or tested. Actions has a "store", unlike the other cloud-hosted competetors but like Jenkins, where you can install different modules into your build scripts and workflows to speed up the process of either compiling your programs or just writing your build scripts. GitHub refers to the machines that run your build scripts as "runners" and there are two types: hosted and self-hosted. Hosted are the runners that GitHub provides. There is a good summary on them [here](https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners), but the main things you need to know are these: each hosted runner gets two vCores and 7GB of RAM and you get 14GB of SSD storage. You can pick between your different operating systems, but the biggest thing you should know is this: Its free if your project is open source. Free CI/CD on any project I'm willing to share? Count me in!
 
 To define an action, you use a YAML file. This file contains all external actions you call, all of the systems you wish to build on (and yes, you can build on more than one at a time), and any installation of dependencies you need for your project (and yes, you do get `sudo` when building on macOS and Ubuntu). Unless you are hosting your own runner, you will have to install dependencies every time, as the VMs are destroyed at the end of the run. This is great if you do not want to risk anything getting changed in the OS that may affect your build, but is annoying as installed dependencies will eat your limited private minutes if you are one to hide your projects from the world. Here is an example of the file I use on my Discord Bot, also available in its latest stable iteration [here](https://github.com/chand1012/Discord-Quick-Meme/blob/master/.github/workflows/go.yml):
 
@@ -52,8 +52,6 @@ jobs:
       run: GOOS=linux GOARCH=amd64 go build -v -o GoDiscordBot
     - name: Build Linux ARMv7
       run: GOOS=linux GOARCH=arm GOARM=7 go build -v -o GoDiscordBotArm
-    - name: Build Windows x64
-      run: GOOS=windows GOARCH=amd64 go build -v -o GoDiscordBot.exe
     - name: Archive Linux x86_64
       uses: actions/upload-artifact@v1
       with:
@@ -64,11 +62,6 @@ jobs:
       with:
           name: GoDiscordBotArm
           path: GoDiscordBotArm
-    - name: Archive Windows x64
-      uses: actions/upload-artifact@v1
-      with:
-        name: GoDiscordBotWindows
-        path: GoDiscordBot.exe
 
 ```
 
