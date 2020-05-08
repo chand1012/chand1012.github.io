@@ -1,4 +1,9 @@
-In this tutorial we will be setting up a Spigot Minecraft server on Ubuntu 18.04 LTS. Spigot is a Minecraft server that supports Vanilla (as in, not modded) clients while allowing plugins to make the user experience different. It also is more resource efficient than the default server, and allows more granular control over your users, allowing you to give them the best experience possible. 
+---
+layout: post
+title: How to Host a Spigot Server on Ubuntu 18.04 LTS
+---
+
+In this article we will be setting up a Spigot Minecraft server on Ubuntu 18.04 LTS. Spigot is a Minecraft server that supports Vanilla (as in, not modded) clients while allowing plugins to make the user experience different. It also is more resource efficient than the default server, and allows more granular control over your users, allowing you to give them the best experience possible. 
 
 ## Requirements
 
@@ -27,7 +32,7 @@ Next, download the latest Spigot Build Tool:
 After that's downloaded, execute it with Java:
 
     java -Xmx512M -Xms512M -jar BuildTools.jar
-u
+
 This will download and compile the latest Spigot Minecraft server. If you wish to specify a version, for example 1.14.4, you would execute the following: 
 
     java -Xmx512M -Xms512M -jar BuildTools.jar --rev 1.14.4
