@@ -5,7 +5,7 @@ title: Transisioning from Python to Golang and why Python programmers should con
 
 ## Intro
 
-Ever since I started programming, high-level languages, like Python, Ruby, and Lua, have always been my languages of choice for my personal projects. I also dabbled with a VERY slight amount of C and C++, most of which was due to my small collection of Arduino boards. If you have ever used either Python, Ruby, or Lua, you probably heard that these are called *interpreted* languages. This means that when you install them, you never have to run any sort of compiler. On Windows, all you have to do to run them is either double click or run `python myscript.py` in the directory of the script and it runs. Go is a *compiled* langage, meaning that it needs to be compiled to machine code before it can be run. This has the advantage of being **much** faster than an interpreted langage. Most compiled langages, especially ones like C and Java, are known to have a somewhat steep learning curve for beginners. Go is special in that reguard, as it tries to bridge the gap between the two types of langages, being compiled like C but with a more user-friendly route to coding, like Python. This post is not really a tutorial, but mostly a guide for people like me who are used to interpreted and dynamically typed languages  like Python in transition to a statically typed and compiled langage like Golang.
+Ever since I started programming, high-level languages, like Python, Ruby, and Lua, have always been my languages of choice for my personal projects. I also dabbled with a VERY slight amount of C and C++, most of which was due to my small collection of Arduino boards. If you have ever used either Python, Ruby, or Lua, you probably heard that these are called *interpreted* languages. This means that when you install them, you never have to run any sort of compiler. On Windows, all you have to do to run them is either double click or run `python myscript.py` in the directory of the script and it runs. Go is a *compiled* language, meaning that it needs to be compiled to machine code before it can be run. This has the advantage of being **much** faster than an interpreted language. Most compiled languages, especially ones like C and Java, are known to have a somewhat steep learning curve for beginners. Go is special in that regard, as it tries to bridge the gap between the two types of languages, being compiled like C but with a more user-friendly route to coding, like Python. This post is not really a tutorial, but mostly a guide for people like me who are used to interpreted and dynamically typed languages  like Python in transition to a statically typed and compiled language like Golang.
 
 ## Types
 
@@ -22,7 +22,7 @@ else:
 
 ```
 
-In most low-level or compiled languages, Golang included, this is horribly taboo. This is because Python is a dynamically typed language, as most interpreted languages are. This is because variables can hold all types, which is why they are called dynamic. When you declare a varable in Go, while you can delcare a variable without delaring its type, as the compiler can differntiate what the type is supposed to be, the type must remain the same for the duration of the scope, like so:
+In most low-level or compiled languages, Golang included, this is horribly taboo. This is because Python is a dynamically typed language, as most interpreted languages are. This is because variables can hold all types, which is why they are called dynamic. When you declare a variable in Go, while you can declare a variable without declaring its type, as the compiler can differentiate what the type is supposed to be, the type must remain the same for the duration of the scope, like so:
 
 ```Go
 package main
@@ -53,7 +53,7 @@ var (
 )
 
 func main {
-    // This could have been definied like in the previous example
+    // This could have been defined like in the previous example
     // but it is better practice to predefine your variables.
     things = []string{"one", "two", "three"}
     for i = 0; i<4; i++{
@@ -62,7 +62,7 @@ func main {
     }
     // up to here will compile
     // this will not work
-    for _, i := range things{ // This doesnt work because i is an integer,
+    for _, i := range things{ // This doesn't work because i is an integer,
         fmt.Println(i)        // not a string.
     }
 
@@ -159,7 +159,7 @@ func main() {
 }
 ```
 
-Now, it is **really** bad practice as a developer to have multiple threads write to the same variable at the same time. At best, the data gets a little corrupted but the program keeps chugging. At worst, one of the threads has a `segmentation fault`, or an error in memory reads and writes, which will crash the entire program. Go remedies this by providing channels to funnel data between the threads. When you request a variable from a channel, it gets the oldest value added and continues your program. The channel isn't ready to read or write, execution will pause until the channel is complete being written to or until the channel is ready to send your data to a variable. A nice little website called [Go By Example](https://gobyexample.com) has a better way of explaining basically everything on this page, and I highly reccomend you go and check out that site for more Go stuff, but for now I am going to borrow the part the site about using channels as a tool to better organize your goroutines. First I will show you his example from [here](https://gobyexample.com/channel-synchronization) and explain a little better after you look over it:
+Now, it is **really** bad practice as a developer to have multiple threads write to the same variable at the same time. At best, the data gets a little corrupted but the program keeps chugging. At worst, one of the threads has a `segmentation fault`, or an error in memory reads and writes, which will crash the entire program. Go remedies this by providing channels to funnel data between the threads. When you request a variable from a channel, it gets the oldest value added and continues your program. The channel isn't ready to read or write, execution will pause until the channel is complete being written to or until the channel is ready to send your data to a variable. A nice little website called [Go By Example](https://gobyexample.com) has a better way of explaining basically everything on this page, and I highly recommend you go and check out that site for more Go stuff, but for now I am going to borrow the part the site about using channels as a tool to better organize your goroutines. First I will show you his example from [here](https://gobyexample.com/channel-synchronization) and explain a little better after you look over it:
 
 ```Go
 package main
@@ -184,7 +184,7 @@ func main() {
 }
 ```
 
-By default, channels will pause your program until they have data to read from, in this case that data is a boolean value. This is considered the "old" way. The "new" and "recommended" way (which I myself follow) uses the `sync` module. Instead of having a seperate channel for the status of the thread, you pass a pointer to a variable of the type `sync.WaitGroup` into the worker and defer the command `wg.Done()` like so:
+By default, channels will pause your program until they have data to read from, in this case that data is a boolean value. This is considered the "old" way. The "new" and "recommended" way (which I myself follow) uses the `sync` module. Instead of having a separate channel for the status of the thread, you pass a pointer to a variable of the type `sync.WaitGroup` into the worker and defer the command `wg.Done()` like so:
 
 ```Go
 package main

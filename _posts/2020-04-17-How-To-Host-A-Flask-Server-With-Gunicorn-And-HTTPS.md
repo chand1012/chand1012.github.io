@@ -1,3 +1,8 @@
+---
+layout: post
+title: How to Host a Flask Server With Gunicorn and HTTPS
+---
+
 In this tutorial, we will be setting up a Flask server using Gunicorn and NGINX on Ubuntu 18.04 LTS. 
 
 ## Requirements
@@ -15,7 +20,7 @@ After connecting via SSH to your server as root, run the following commands to i
     apt install nginx python3 python3-pip virtualenv
 
 
-This will install Python, NGINX, and the virtual enviroment needed to run the app. It will also install PIP to download the additional packages. After that concludes we can move on with setting up the application itself.
+This will install Python, NGINX, and the virtual environment needed to run the app. It will also install PIP to download the additional packages. After that concludes we can move on with setting up the application itself.
 
 ## Setup
 
@@ -77,8 +82,6 @@ gunicorn -w 2 -b 127.0.0.1:8080 app:app
 [Gunicorn's Documentation](https://docs.gunicorn.org/en/stable/settings.html#workers) recommends that you use between two and four workers per core on your server.
 
 Use `Ctrl+C` to exit the application.
-
-
 
 Now, most people do not want to SSH into their server every time you want people to access your web app, so we will be making a service file to run the app on boot of the server. Execute the following command to create the file:
 
@@ -169,7 +172,7 @@ Paste the following configuration into the file:
     }
 
 
-After restarting nginx with `systemctl restart nginx`, you have a working app hosted on your server. Navigate to the app IP address and you should see `Hello from Flask!` in the top left corner of your favorite browser. This app will function as normal, but is especially suseptible to attacks as it doesn not have HTTPS. If you wish to configure that as well, continue along.
+After restarting nginx with `systemctl restart nginx`, you have a working app hosted on your server. Navigate to the app IP address and you should see `Hello from Flask!` in the top left corner of your favorite browser. This app will function as normal, but is especially susceptible to attacks as it does not have HTTPS. If you wish to configure that as well, continue along.
 
 ## Adding HTTPS
 
