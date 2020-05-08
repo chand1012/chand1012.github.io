@@ -27,35 +27,49 @@ This will download and install the latest version of OpenJDK, which we will use 
 
 Next, download the latest Spigot Build Tool:
 
-    wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+```
+wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+```
 
 After that's downloaded, execute it with Java:
 
-    java -Xmx512M -Xms512M -jar BuildTools.jar
+```
+java -Xmx512M -Xms512M -jar BuildTools.jar
+```
 
 This will download and compile the latest Spigot Minecraft server. If you wish to specify a version, for example 1.14.4, you would execute the following: 
 
-    java -Xmx512M -Xms512M -jar BuildTools.jar --rev 1.14.4
+```
+java -Xmx512M -Xms512M -jar BuildTools.jar --rev 1.14.4
+```
 
 This will take about 15 minutes to execute. After this executes, change directory to the home directory and make a new folder for the server:
 
-    cd ~
-    mkdir server
-    cd server
+```
+cd ~
+mkdir server
+cd server
+```
 
 Then copy the executable to the directory. In this example, we will assume you made a 1.15.2 server. To copy the server, execute the following command
 
-    cp ~/build/spigot-1.15.2.jar ./spigot-1.15.2.jar
+```
+cp ~/build/spigot-1.15.2.jar ./spigot-1.15.2.jar
+```
 
 This will copy the files to your server folder. Now we can make a startup script for your server. This will prevent you from having to enter the command over and over again to start your server. You can create this file with `nano`:
 
-    nano start.sh
+```
+nano start.sh
+```
 
 Paste the following into the start up file:
 
-    #!/bin/bash
-    echo Starting Minecraft Vultr Server...
-    java -Xms512M -Xmx768M -jar spigot-1.15.2.jar
+```
+#!/bin/bash
+echo Starting Minecraft Spigot Server...
+java -Xms512M -Xmx768M -jar spigot-1.15.2.jar
+```
 
 This will start the Minecraft server with 768MB of RAM. I recommend allocating 75% of the VPS memory to your Minecraft server, this should allow enough RAM to the OS to keep running, and also allow some room for players on your server.
 
