@@ -14,11 +14,11 @@ In this tutorial, we will be setting up a Flask server using Gunicorn and NGINX 
 
 After connecting via SSH to your server as root, run the following commands to install the required programs:
 
-
-    apt update
-    apt upgrade -y
-    apt install nginx python3 python3-pip virtualenv
-
+```
+apt update
+apt upgrade -y
+apt install nginx python3 python3-pip python3-venv
+```
 
 This will install Python, NGINX, and the virtual environment needed to run the app. It will also install PIP to download the additional packages. After that concludes we can move on with setting up the application itself.
 
@@ -38,14 +38,14 @@ This will prevent your users from accessing the app without going through the NG
 
 Next we need to set up the file structure for the application. Execute the following in order:
 
-
-    mkdir -p /var/www/flask
-    cd /var/www/flask
-    virtualenv hello-world --python=python3
-    source hello-world/bin/activate
-    cd hello-world
-    pip3 install gunicorn flask
-
+```
+mkdir -p /var/www/flask
+cd /var/www/flask
+python3 -m venv hello-world
+source hello-world/bin/activate
+cd hello-world
+pip3 install gunicorn flask
+```
 
 Next, we will write the program for the app itself. Enter the following command:
 
@@ -55,15 +55,15 @@ nano app.py
 
 Then enter the following code in the script
 
+```
+from flask import Flask
 
-    from flask import Flask
+app = Flask(__name__)
 
-    app = Flask(__name__)
-
-    @app.route('/')
-    def index():
-        return "Hello from Flask!"
-
+@app.route('/')
+def index():
+    return "Hello from Flask!"
+```
 
 ### Gunicorn
 
@@ -91,26 +91,26 @@ nano /lib/systemd/system/flask.service
 
 Paste the following configuration in to the file:
 
+```
+[Unit]
+Description=Gunicorn Flask Application
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
 
-    [Unit]
-    Description=Gunicorn Flask Application
-    After=network.target
-    After=systemd-user-sessions.service
-    After=network-online.target
+[Service]
+User=root
+Type=simple
+ExecStart=/var/www/flask/hello-world/start.sh
+TimeoutSec=30
+Restart=on-failure
+RestartSec=15
+StartLimitInterval=350
+StartLimitBurst=10
 
-    [Service]
-    User=root
-    Type=simple
-    ExecStart=/var/www/flask/hello-world/start.sh
-    TimeoutSec=30
-    Restart=on-failure
-    RestartSec=15
-    StartLimitInterval=350
-    StartLimitBurst=10
-
-    [Install]
-    WantedBy=multi-user.target
-
+[Install]
+WantedBy=multi-user.target
+```
 
 This will enable launch of the app on boot of your server using `systemd`. NGINX is already configured to do this when you install it. Now we need the `start.sh` file. Run the following to create the file:
 
@@ -120,14 +120,14 @@ nano /var/www/flask/hello-world/start.sh
 
 Then paste this bash code to launch the app:
 
-
-    #!/bin/bash
-    echo Starting Flask example app.
-    cd /var/www/flask
-    source hello-world/bin/activate
-    cd hello-world
-    gunicorn -w 2 -b 127.0.0.1:8080 app:app
-
+```
+#!/bin/bash
+echo Starting Flask example app.
+cd /var/www/flask
+source hello-world/bin/activate
+cd hello-world
+gunicorn -w 2 -b 127.0.0.1:8080 app:app
+```
 
 Then allow the file to be executable with:
 
@@ -147,30 +147,30 @@ Next we need to set up NGINX. NGINX allows us to set up a reverse proxy that red
 
 First deactivate the default config, then change to the `sites-enabled` directory and create a  new file:
 
-
-    rm /etc/nginx/sites-enabled/default
-    cd /etc/nginx/sites-enabled
-    nano reverse-proxy.conf
-
+```
+rm /etc/nginx/sites-enabled/default
+cd /etc/nginx/sites-enabled
+nano reverse-proxy.conf
+```
 
 Paste the following configuration into the file:
 
+```
+server {
+    listen 80;
+    listen [::]:80;
+    server_name _;
+    access_log /var/log/nginx/reverse-access.log;
+    error_log /var/log/nginx/reverse-error.log;
 
-    server {
-        listen 80;
-        listen [::]:80;
-        server_name _;
-        access_log /var/log/nginx/reverse-access.log;
-        error_log /var/log/nginx/reverse-error.log;
-
-        location / {
-                    proxy_set_header X-Real-IP $remote_addr;
-                    proxy_set_header HOST $http_host;
-                    proxy_pass http://127.0.0.1:8080;
-                    proxy_redirect off;
-        }
+    location / {
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header HOST $http_host;
+                proxy_pass http://127.0.0.1:8080;
+                proxy_redirect off;
     }
-
+}
+```
 
 After restarting nginx with `systemctl restart nginx`, you have a working app hosted on your server. Navigate to the app IP address and you should see `Hello from Flask!` in the top left corner of your favorite browser. This app will function as normal, but is especially susceptible to attacks as it does not have HTTPS. If you wish to configure that as well, continue along.
 
@@ -198,37 +198,37 @@ openssl dhparam -out /etc/nginx/dhparam.pem 4096
 
 To add to the web server, you will have to change the server configs. Remove the config you created previously and edit the configuration file as you did before:
 
-
-    rm /etc/nginx/sites-enabled/reverse-proxy.conf
-    nano /etc/nginx/sites-enabled/reverse-proxy.conf
-
+```
+rm /etc/nginx/sites-enabled/reverse-proxy.conf
+nano /etc/nginx/sites-enabled/reverse-proxy.conf
+```
 
 Then paste the following config into your file:
 
+```
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com;
 
-    server {
-        listen 80;
-        listen [::]:80;
-        server_name example.com;
+    return 302 https://$server_name$request_uri;
+}
 
-        return 302 https://$server_name$request_uri;
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl_certificate /etc/ssl/certs/selfsigned.crt;
+    ssl_certificate_key /etc/ssl/private/selfsigned.key;
+
+    ssl_dhparam /etc/nginx/dhparam.pem;
+    location / {
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header HOST $http_host;
+                proxy_pass http://127.0.0.1:8080;
+                proxy_redirect off;
     }
-
-    server {
-        listen 443 ssl;
-        listen [::]:443 ssl;
-        ssl_certificate /etc/ssl/certs/selfsigned.crt;
-        ssl_certificate_key /etc/ssl/private/selfsigned.key;
-
-        ssl_dhparam /etc/nginx/dhparam.pem;
-        location / {
-                    proxy_set_header X-Real-IP $remote_addr;
-                    proxy_set_header HOST $http_host;
-                    proxy_pass http://127.0.0.1:8080;
-                    proxy_redirect off;
-        }
-    }
-
+}
+```
 
 Before closing and saving, replace `example.com` with the IP Address of your server, or if you have an A record DNS pointing to your server's IP, use that instead. After this is complete, restart NGINX with `systemctl restart nginx`. 
 
