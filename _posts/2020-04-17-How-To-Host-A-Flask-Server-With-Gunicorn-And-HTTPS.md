@@ -14,7 +14,7 @@ In this tutorial, we will be setting up a Flask server using Gunicorn and NGINX 
 
 After connecting via SSH to your server as root, run the following commands to install the required programs:
 
-```
+```Bash
 apt update
 apt upgrade -y
 apt install nginx python3 python3-pip python3-venv
@@ -28,7 +28,7 @@ This will install Python, NGINX, and the virtual environment needed to run the a
 
 Before continuing, we want to restrict port 8080 incoming so that only NGINX can access Gunicorn. To do that, execute the following command:
 
-```
+```Bash
 iptables -A INPUT -p tcp --destination-port 8080 -j DROP
 ```
 
@@ -38,7 +38,7 @@ This will prevent your users from accessing the app without going through the NG
 
 Next we need to set up the file structure for the application. Execute the following in order:
 
-```
+```Bash
 mkdir -p /var/www/flask
 cd /var/www/flask
 python3 -m venv hello-world
@@ -55,7 +55,7 @@ nano app.py
 
 Then enter the following code in the script
 
-```
+```Python
 from flask import Flask
 
 app = Flask(__name__)
@@ -69,13 +69,13 @@ def index():
 
 Next we need to run the app with Gunicorn. To do this, execute the following command:
 
-```
+```Bash
 gunicorn -b 127.0.0.1:8080 app:app 
 ```
 
 This will start the app on localhost only with the port 8080. If you wish to run the app with multithreading enabled, specify a number of workers with the `-w` flag:
 
-```
+```Bash
 gunicorn -w 2 -b 127.0.0.1:8080 app:app 
 ```
 

@@ -22,8 +22,10 @@ This will update the package index and download and install all the latest updat
 
 This will download and install the latest version of OpenJDK, which we will use to execute all of the Java executable on our machine. After the installation finishes, make a new folder. Let's call it `build`.
 
-    mkdir build
-    cd build
+```
+mkdir build
+cd build
+```
 
 Next, download the latest Spigot Build Tool:
 
