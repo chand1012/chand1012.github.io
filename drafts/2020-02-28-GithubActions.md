@@ -58,3 +58,7 @@ jobs:
 Now I have a lot of repeats that realistically are not required, but I wanted to know what was going on in the web interface. Anyone can go on your Action and view what was executed, so don't put a password in the file (there are ways to safely input those found [here](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)). You can look at my executed actions for this project [here](https://github.com/chand1012/Discord-Quick-Meme/actions).
 
 Now this Action is relatively simple. All it does is download and install the Go toolchain to the VM, imports my code from the repo, installs all dependencies, and runs unit tests and unit benchmarks. If you had a lot of platforms and/or or compiling took more than a few second, say a few minutes or even an hour, you could make multiple similar YAML files with your build scripts in them. If you are under your maximum concurrent jobs (for a free user its 20 VMs), it will run all of them at once, otherwise they will be queued and executed when a slot is available.
+
+## Okay, but how can I use this?
+
+If you are a fan of compiled languages, you see a use in this right away. If you like unit testing, you see a use right away. If you are a novice programmer, or one who strictly uses interpreted languages, you are probably scratching your head, thinking "how is this useful for me?". 
