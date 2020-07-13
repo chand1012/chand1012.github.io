@@ -49,7 +49,8 @@ body_parts = {
     "ears": 2
 }
 
-# list
+# list can hold any data type, this one is just strings though
+# a list with mixed types is acceptable.
 friends = ['Daisy', 'Olivia', 'Dan']
 
 # calling a variable from the list
@@ -67,7 +68,7 @@ complex_state = complex(2, -5)
 
 # Converting Between Types
 
-Converting between strings, integers, and floats is easy. Here are a few options:
+Converting between strings, integers, and floats is easy. Basic arithmetic is also the same as most other languages. Here are a few options:
 
 ```Python
 
@@ -90,12 +91,67 @@ test = 'x is ' + x
 # without conversion, but the output is always a float
 
 total = x + y + float(z)
+average = total / 3
+product = x * y * float(z)
+difference = x - y
 
 # you can also convert z into an int
 # this will round to the nearest whole
 # number
 
+y_int = round(y)
 z_int = round(float(z))
+
+# this will cause a runtime error
+divide_by_zero = x / 0
 
 ```
 
+You can also get all of the keys or all of the values of a dictionary as a list, like so:
+
+```Python
+
+# dictionary
+body_parts = {
+    "tail": 1,
+    "paws": 4,
+    "eyes": 2,
+    "ears": 2
+}
+
+keys = list(body_parts.keys())
+values = list(body_parts.values())
+
+
+```
+
+There is two other data types that is included in Python's standard library that we should mention: tuples and ranges. Tuples are essentially just immutable lists, as in they are a list that cannot be changed after being defined. Everything else about them is the same, they index at one, individual variables are access using the same method as lists, and they can accept any type. They can be converted to lists by passing them into the `list(x)` function. Ranges are a way to generate lists of numbers. By default, a range is its own data type, but they can be converted to lists same as tuples. They have three initialization variables, but this also depends on how you generate the range. Here are a few examples from Python's [official documentation](https://docs.python.org/3/library/stdtypes.html?highlight=range#range):
+
+```Python
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> list(range(1, 11))
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> list(range(0, 30, 5))
+[0, 5, 10, 15, 20, 25]
+>>> list(range(0, 10, 3))
+[0, 3, 6, 9]
+>>> list(range(0, -10, -1))
+[0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+>>> list(range(0))
+[]
+>>> list(range(1, 0))
+[]
+```
+
+The ending number is always omitted. This can be used to form loops, which we will go into more detail in the next article. Here is a small example:
+
+```Python
+for i in range(10):
+    print(f'This is the {i+1} loop')
+
+```
+
+# Closing Statements
+
+That was a fast rundown of the basic data types of Python. For the next article, we will go over how to use loops, logic, and error handing. Part 3 will start covering some included libraries to try out and use in your own projects. Hope you found this helpful!
