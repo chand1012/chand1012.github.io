@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python For Programmers Part 2
+title: Python For Programmers Part 2, Controls
 ---
 
 This is a series on Python and how to correctly use Python when coming from a background in another computer language. Because of this, this will not be a slow intro into programming and it will be assumed you have a preferred text editor and are smart enough to get Python running. You can download installers and packages from their official website found [here](https://www.python.org/downloads/). Basic knowledge of how to use [Git](https://git-scm.com/) and how to operate a computer is also preferred.
@@ -8,6 +8,10 @@ This is a series on Python and how to correctly use Python when coming from a ba
 This series will assume you are familiar with some form of a computer language and basic programming paradigms. C/C++, JavaScript, and Go will be referred to most as they are my most familiar languages other than Python, but anyone with experience in really anything else should be able to follow along.
 
 - [Part 1](https://chand1012.dev/PythonForProgrammers/)
+
+# Indentation
+
+Before we start talking about controlling your scripts and programs, we should talk about how Python can tell what's in a statement/loop or anything else. Rather than using brackets like most other languages, Python opts to scan for indentations. This can be one of two ways, but not both at the same time. The first and most common/most "Pythonic" method is to use four spaces as one indentation level. Most text editors that support Python do this already, and if not, consult your text editors settings to change this. The other way is with tab characters, but with modern text editors, this is being phased out. If you mix these two together, the Python script will not execute at all.
 
 # Loops
 
@@ -32,8 +36,8 @@ That's it. You have just iterated over all the dogs. This will print each dog li
 
 dogs = ['Murphy', 'Champion', 'Marley']
 
-# range takes the length of an array and starts
-# at an index of zero to make these things
+# range takes an integer and makes a list from 0 to n-1
+# an index of zero to makes indexing lists
 # easier. 'len' simply gets the length of a list or string.
 
 for i in range(len(dogs)):
@@ -91,7 +95,106 @@ while counter < 10:
 
 ```
 
-But `break` has its uses.
+But `break` has its uses. `Break` can also be used to escape `for` loops.
 
 ## Continue
 
+The `continue` statement also has its roots in C. It does the same thing as it does in most other languages: skips the rest of the loop and starts the next iteration. Here is an example of that:
+
+```Python
+
+breeds = {
+    "Murphy": "German Shepard",
+    "Champion": "Mixed",
+    "Marley": "Labrador Retriever"
+}
+
+print("Here is a list of purebred dogs: ")
+
+for key in breeds:
+    breed = breeds.get(key)
+    if breed is 'Mixed':
+        continue
+    print(breed)
+
+```
+
+# Logic
+
+## Conditionals
+
+Python uses a mix of conditionals from C and a few of its own. For example, the statements `==`, `!=`, `<=`, and `>=` are all perfectly valid in Python. These all compare the values of the items in question. Python also adds `is`, as previously shown, and `in`. The `in` keyword can either be used with iterators or as a conditional. You have already seen how it can be used with loops, but here is an example of it used as a conditional:
+
+```Python
+
+# the colors of the dogs!
+colors = ['black', 'brown', 'white']
+
+if 'brown' in colors:
+    print("I found brown!")
+
+color = colors[1]
+
+if 'own' in color:
+    print('There is "own" in brown!')
+
+```
+
+The `in` statement works with strings, lists, dictionaries, and a few others. The conditional statement `is` compares identity rather than value. When I say `identity`, I mean type and value, so for example:
+
+```Python
+
+# these are mathematically the same
+x = 7
+y = 7.0
+z = complex(7, 0)
+
+print(x == y)
+print(x is y)
+print(y == z)
+print(y is z)
+print(x == z)
+print(x is z)
+
+```
+
+The output would be `True`, `False, `True`, `False, `True`, `False`. While from a value standpoint, `7.0` is the same as `7`, they are not the same thing. Same with the complex form of `7+0j`. What I have used the `is` statement for the most is checking whether or not a value is `None`, as it is both the "Pythonic" way to do it, and because it looks nicer. Python is supposed to be both a functional and readable language, so you should use it as such.
+
+The next thing we should talk about is the logical operators: `not`, `and`, and `or`. Rather than using the symbols, Python shot for the most human readable way possible and just literally uses the English words for the code. The `not` operator is the same as `!` in every other language, and should be used as such. The `and` and `or` statements should be self explanatory. Here is an example of all three.
+
+```Python
+
+team = "team"
+
+if not "i" in team:
+    print("There is no 'i' in team!")
+
+if "e" in team and "a" in team:
+    print("There is an EA!")
+
+if "t" in team or "j" in team:
+    print("There is either a 't' or a 'j' in team.")
+
+```
+
+## If Statements
+
+In the last example of the Loops section, you see a simple use of an `if` statement in Python. In Python, the three `if` statement keywords are `if`, `elif`, and `else`, with `elif` being the equivalent to most other languages' `else if`. Here is an example of an `if..elif..else` statement.
+
+```Python
+# I will discuss imports in part 4
+# for now just know that I needed this
+# for my example. This is math functions.
+import math 
+
+x = 128
+
+if math.log2(x).is_integer(): # is_integer method checks if a float is also an integer (in a mathematical sense)
+    print("x is power of two.")
+elif x % 2 is 0:
+    print("x is even.")
+else:
+    print("x is odd.")
+```
+
+The `elif` statement can be used as many times as you want in an `if..elif..else` block. If you were to say have three `if` statement in a row with an `if..elif..else` block at the end, it would have significantly different behavior than if I were to use an `if..elif..elif..elif..elif..else` block. The three `if` statements would be assumed to all be apart of separate logic, just as if you were to do the same in C. There is no `switch` statements in Python, so if you have a situation where you would use them, you may just be using an `if` statement with a lot of `elif`s mixed in.

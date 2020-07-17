@@ -31,6 +31,8 @@ For variables in Python, you just specify the name and then an equal sign, along
 
 ```Python
 # string
+# edit: single and double quotes are
+# both acceptable
 name = "Murphy"
 
 # all numbers are signed.
