@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python For Programmers Part 2, Controls
+title: Python For Programmers Part 2; Controls
 ---
 
 This is a series on Python and how to correctly use Python when coming from a background in another computer language. Because of this, this will not be a slow intro into programming and it will be assumed you have a preferred text editor and are smart enough to get Python running. You can download installers and packages from their official website found [here](https://www.python.org/downloads/). Basic knowledge of how to use [Git](https://git-scm.com/) and how to operate a computer is also preferred.
@@ -11,7 +11,7 @@ This series will assume you are familiar with some form of a computer language a
 
 # Indentation
 
-Before we start talking about controlling your scripts and programs, we should talk about how Python can tell what's in a statement/loop or anything else. Rather than using brackets like most other languages, Python opts to scan for indentations. This can be one of two ways, but not both at the same time. The first and most common/most "Pythonic" method is to use four spaces as one indentation level. Most text editors that support Python do this already, and if not, consult your text editors settings to change this. The other way is with tab characters, but with modern text editors, this is being phased out. If you mix these two together, the Python script will not execute at all.
+Before we start talking about controlling your scripts and programs, we should talk about how Python can tell what's in a statement/loop or anything else. Rather than using brackets like most other languages, Python opts to scan for indentations. This can be one of two ways, but not both at the same time. The first and most common/most "Pythonic" method is to use four spaces as one indentation level. Most text editors that support Python do this already, and if not, consult your text editors settings to change this. The other way is with tab characters, but with modern text editors, this is being phased out. If you mix these two together, the Python script will not execute at all. The start of an indented code block is preceded on the line that requires it with a colon, as you will soon see.
 
 # Loops
 
@@ -37,8 +37,8 @@ That's it. You have just iterated over all the dogs. This will print each dog li
 dogs = ['Murphy', 'Champion', 'Marley']
 
 # range takes an integer and makes a list from 0 to n-1
-# an index of zero to makes indexing lists
-# easier. 'len' simply gets the length of a list or string.
+# an index of zero to makes indexing lists easier. 
+# 'len' simply gets the length of a list or string.
 
 for i in range(len(dogs)):
     print(dogs[i])
@@ -63,6 +63,11 @@ for key in breeds:
     value = breeds.get(value) 
     print(value)
 
+# dictionaries can also be called upon this way:
+for key, value in breeds.items():
+    print(key)
+    print(value)
+
 ```
 
 ## While Loops
@@ -83,6 +88,8 @@ while True:
 
 ```
 
+Quick side note: Python has a few shortcut operators, like from C: `+=` adds and sets, `-=` subtracts and sets, `*=` multiplies and sets, and `/=` divides and sets.
+
 Now this same loop can be achieved with less code, like so:
 
 ```Python
@@ -95,7 +102,7 @@ while counter < 10:
 
 ```
 
-But `break` has its uses. `Break` can also be used to escape `for` loops.
+But `break` has its uses. `Break` can also be used to escape `for` loops before they are finished iterating.
 
 ## Continue
 
@@ -166,23 +173,20 @@ The next thing we should talk about is the logical operators: `not`, `and`, and 
 
 team = "team"
 
-if not "i" in team:
-    print("There is no 'i' in team!")
-
-if "e" in team and "a" in team:
-    print("There is an EA!")
-
-if "t" in team or "j" in team:
-    print("There is either a 't' or a 'j' in team.")
+print(not "i" in team)
+print("e" in team and "a" in team)
+print("t" in team or "j" in team)
 
 ```
+
+These will all print out `True`.
 
 ## If Statements
 
 In the last example of the Loops section, you see a simple use of an `if` statement in Python. In Python, the three `if` statement keywords are `if`, `elif`, and `else`, with `elif` being the equivalent to most other languages' `else if`. Here is an example of an `if..elif..else` statement.
 
 ```Python
-# I will discuss imports in part 4
+# I will discuss imports in part 3
 # for now just know that I needed this
 # for my example. This is math functions.
 import math 
@@ -198,3 +202,33 @@ else:
 ```
 
 The `elif` statement can be used as many times as you want in an `if..elif..else` block. If you were to say have three `if` statement in a row with an `if..elif..else` block at the end, it would have significantly different behavior than if I were to use an `if..elif..elif..elif..elif..else` block. The three `if` statements would be assumed to all be apart of separate logic, just as if you were to do the same in C. There is no `switch` statements in Python, so if you have a situation where you would use them, you may just be using an `if` statement with a lot of `elif`s mixed in.
+
+# Methods (Functions)
+
+Methods, or as they are known in other programming languages, Functions, are a quintessential part of the programming paradigm. Functions in Python are not similar to C, but more similar to JavaScript, in the sense that type of the input and output variables is not set. Python functions can be created before or after the code that calls them, and they can be used recursively. Here are a few examples of them.
+
+```Python
+
+# simple square function
+def square(x):
+    return x*x
+
+# simple recursive function
+def recursive_power(x, y):
+    if y>1:
+        return x*recursive_power(x, y-1)
+    else:
+        return x
+
+# function with no return
+def print_10_times(a_string):
+    for _ in range(10):
+        print(a_string)
+
+```
+
+There is one thing to be discussed that I did in the `for` loop, which is the use of the underscore as the variable to be used when iterated. It is common practice in Python, and most other languages, to use this variable as a sort of "I don't care" variable for values that can be ignored. In some languages it is a reserved keyword and can only be used for that purpose, such as in Golang, but in Python, its actually just a variable, and could be called upon if used as a standard variable. 
+
+The other thing about underscores in Python is that prefixing a function with them implies that the function should only be used internally, wether that is for classes (we will get to those in the next part of this series), or for files that just contain functions. This does not stop them from being used, but most programmers should stray away from using functions that other programmers may not want you to use. 
+
+That concludes part 2 of "Python for Programmers". In the next article, I will be going over classes and imports.
