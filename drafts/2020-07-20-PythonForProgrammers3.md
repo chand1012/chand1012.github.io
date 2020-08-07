@@ -12,8 +12,6 @@ This series will assume you are familiar with some form of a computer language a
 
 Also I know Python calls them methods but I use "methods" and "function" interchangeably.
 
-# Functions/Methods
-
 # Classes
 
 There is something I omitted from the last article that you experienced object-oriented programmers and hackers would probably be in anguish without: classes. Classes are very engrained in Python's nature. Creating a class can be done like so. 
