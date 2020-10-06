@@ -12,9 +12,9 @@ I have a lot of personal projects, many of which I will never finish. I know tha
 
 I also occasionally participate in a cosplay group, called The Outsiders. Currently, my main two cosplays are Starlord (Guardians of the Galaxy) and Superman. Here are some pictures for the curious.
 
-<img src="https://i.imgur.com/vqPcf7l.jpg" height="576" width="1024"/>
+<img src="https://i.imgur.com/vqPcf7l.jpg" width="1024"/>
 
-<img src="https://i.imgur.com/9ZfWYIX.jpg" height="591" width="998"/>
+<img src="https://i.imgur.com/9ZfWYIX.jpg" width="998"/>
 
 ### Contact Me
 
