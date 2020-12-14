@@ -5,10 +5,28 @@ permalink: /about/
 ---
 
 
+# About Me
+My name is Chandler, and I like to code. Ever since I was 8 or 9, I was fascinated by computers and coding. My first venture into coding was a Lego Mindstorms robot. It was graphical, but it was an algorithm of sorts. My first "real" coding was in Ruby, which while I can still code in, was quickly replaced by Python. Since then, Python has been my go-to for most of my projects and for any sort of quick prototypes I want to develop. I also have used C/C++ and NodeJS, the HTML5 Stack, and have been learning Golang for the past year. Not long ago I worked as a Software Engineering Intern at a division of SealedAir in Northeast Ohio, and it solidified my dream of coding as a full-time job, as well as teaching me a lot about both the field and working for a real company. That lasted about nine months, and currently I am working a min-wage job in my hometown while going to school full time at The University of Akron.
 
-Hello! My name is Chandler Lofland. I am from Northeast Ohio, from a little town called Randolph about 30 minutes from Akron. I have been into computers since I was about 5 or 6, and I have been programming since I was about 10. I have experience in Python, Golang, C/C++, Lua, Ruby, NodeJS, the HTML5 stack (HTML, JS, CSS), BASIC, and command line scripting (bash and Windows Batch). I have been using Linux since 2014, starting with Ubuntu but later moving on to Arch Linux and Alpine Linux, and I have experience developing custom Linux builds using the Yocto Project. I have some microcontroller development experience, mostly being with Arduino, PlatformIO, and MicroPython. I worked at an internship while in college at Automated Packaging Systems (Now being integrated into Autobag by Sealed Air), developing for their systems using C, NodeJS, Python, also being where I got my first experience with Yocto. Recently I have been dabbling in developing Docker Containers for ease of hosting a few of my web or bot projects.
+# My Big Projects
+I started the [WinGuake](https://github.com/chand1012/WinGuake) project, which is supposed to be a port of the Guake Linux terminal for Windows (I haven't been developing on it as much recently due to time constraints, but help would be appreciated and would go toward development!). Recently I have been working heavily on two projects, one that I will release open source in time, and one that has been used by over 100,000 unique users on Discord, that being [Discord-Quick-Meme](https://github.com/chand1012/Discord-Quick-Meme). 
 
-I have a lot of personal projects, many of which I will never finish. I know that seems irresponsible and not something most people would want, but I see it as a learning experience. Because of my many, many projects I have learned all of those computer languages, and depending on the project's complexity, pretty fluently. Some of my larger projects that I am currently developing include my Discord Bot, [Discord-Quick-Meme](https://github.com/chand1012/Discord-Quick-Meme) which quickly gets accredited memes from Reddit and posts them to your Discord chat, another Discord Bot called [discord-weather-bot](https://github.com/chand1012/discord-weather-bot) that uses OpenWeatherMap and the NOAA Weather API along with a few COVID-19 APIs to get Weather and COVID data for your Discord Channel, and another project that is currently under a NDA. I also have a few non-development projects, such as upgrading my [Ender 3 3D printer](https://chand1012.dev/3dprintingintro/), maintaining a few game servers for my friends, or just improving my skills in my favorite video games, such as Rainbow Six Siege.
+My other hobby is 3D printing, which you can find all of my designs for [here](https://www.thingiverse.com/chand1012/about). I will also be publishing the STEP files to GitHub in the near future.
+
+Finally, I like to write occasionally on [my blog](https://chand1012.dev/). This blog is about any of my projects I think I should write about, random tutorials I feel like writing, and any other random tech topic I want to write about. For your support, I'll put your name on my [Sponsors Page](https://chand1012.dev/sponsors/)!
+
+# Social
+[<img height=48 width=48 src="https://camo.githubusercontent.com/68ff38b86f01b428567dcc406116e23728245f4e/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f696e7374616772616d2e737667"/>](https://instagram.com/chand1012)
+[<img height=48 width=48 src="https://camo.githubusercontent.com/5db862b15e660451b524382c77f60cbd49f176f9/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f6465765f746f2e737667"/>](https://dev.to/chand1012)
+[<img height=48 width=48 src="https://camo.githubusercontent.com/9bbddae7e626bda73c943e06b4568a7a02e193b4/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f747769747465722e737667"/>](https://twitter.com/Chand1012Dev)
+[<img height=48 width=48 src="https://camo.githubusercontent.com/2ed658492cb094825d26b06c1275a7e0414f32e4/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f7265646469742e737667"/>](https://www.reddit.com/user/chand1012)
+[<img height=48 width=48 src="https://camo.githubusercontent.com/8c6d1bbc6c237b1349a387f8085013d873e173cb/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f737465616d2e737667"/>](https://steamcommunity.com/id/chand1012)
+
+# GitHub Stats
+
+[![chand1012's github stats](https://github-readme-stats.vercel.app/api?username=chand1012)](https://github.com/anuraghazra/github-readme-stats)
+
+# Other Fun Stuff
 
 I also occasionally participate in a cosplay group, called The Outsiders. Currently, my main two cosplays are Starlord (Guardians of the Galaxy) and Superman. Here are some pictures for the curious.
 
@@ -25,3 +43,5 @@ I also occasionally participate in a cosplay group, called The Outsiders. Curren
 If you like any of my work, consider a donation! It will help me continue my hobbies and subsidize cost for them.
 
 <iframe src="https://github.com/sponsors/chand1012/card" title="Sponsor chand1012" height="225" width="600" style="border: 0;"></iframe>
+
+Social Icons by [edent](https://github.com/edent/SuperTinyIcons).
