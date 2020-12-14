@@ -17,6 +17,7 @@ Also I know Python calls them methods but I use "methods" and "function" interch
 There is something I omitted from the last article that you experienced object-oriented programmers and hackers would probably be in anguish without: classes. Classes are very engrained in Python's nature. Creating a class can be done like so. 
 
 ```Python
+# This file is named "dogs.py"
 
 class Dog:
     # this is a class variable and will be shared
@@ -50,42 +51,45 @@ class Dog:
         print("Bark Bark")
 
     def set_parts(self, tails=1, ears=2, paws=4):
-        self.parts = {
+        self.parts = { # this sets the instance variable
             "tails": tails,
             "ears": ears,
             "paws": paws
         }
-        return self.parts # and you can use functions to return class variables as well
+        return self.parts # You can also return the value like a standard function
 
     def sheds(self):
-        if self.furry and not self.hypoallergenic:
+        if self.furry and not self.hypoallergenic: # using the instance variables within logic
             return True
         return False
 
-# Here is how to use the class
-murphy = Dog("Murphy", 7)
-murphy.bark()
-murphy.set_parts() # ticks all of the boxes for the default
-if murphy.sheds():
-    print("You should buy a roomba.")
+if __name__=="__main__": # Only run if the file is being explicitly ran as a script.
+    # Here is how to use the class
+    murphy = Dog("Murphy", 7)
+    murphy.bark()
+    murphy.set_parts() # ticks all of the boxes for the default
+    if murphy.sheds():
+        print("You should buy a roomba.")
 
-champion = Dog("Champion", 2)
-champion.set_parts(1, 2, 3) # The dog from Parks and Rec only has 3 legs
+    champion = Dog("Champion", 2)
+    champion.set_parts(1, 2, 3) # The dog from Parks and Rec only has 3 legs
 
-print(murphy)
-print(champion)
+    print(murphy)
+    print(champion)
 
 ```
 
 Instance variables can be defined in functions with `self.<var name>`, and I prefer to define all the ones that I will be using in the `__init__` method for my own organization. Class variables are defined outside of methods and are shared between all functions, even when changed. For example, If I were to change Murphy's genus to 'cat' or something absurd, Champions' genus would change as well. Also, classes can inherit other classes. Here is an example, assuming that the previous class-related code was imported previously.
 
 ```Python
-from dogs import Dog
+
+from dogs import Dog 
 
 class Labrador(Dog):
     def is_purebred(self):
         return True
 
+if __name__=='__main__'
 # the class labrador would have the same 
 # methods, class vars and instance vars as
 # the previous dog class.
@@ -94,4 +98,12 @@ marley.bark()
 marley.set_parts()
 if marley.sheds():
     print("Labs shed a lot.")
+
+if marley.is_purebred():
+    print("This dog is pure!")
 ```
+
+In this example, I imported some of the previously written code. When you call the `import` statement, Python searches in a few places for your code. The places that it searches are called the `PYTHONPATH`, and your current directory is included. When you import another file in Python, the filename is omitted. Here is another import example:
+
+```Python
+import 

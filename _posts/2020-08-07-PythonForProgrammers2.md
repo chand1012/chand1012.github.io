@@ -165,7 +165,7 @@ print(x is z)
 
 ```
 
-The output would be `True`, `False, `True`, `False, `True`, `False`. While from a value standpoint, `7.0` is the same as `7`, they are not the same thing. Same with the complex form of `7+0j`. What I have used the `is` statement for the most is checking whether or not a value is `None`, as it is both the "Pythonic" way to do it, and because it looks nicer. Python is supposed to be both a functional and readable language, so you should use it as such.
+The output would be `True`, `False`, `True`, `False`, `True`, `False`. While from a value standpoint, `7.0` is the same as `7`, they are not the same thing. Same with the complex form of `7+0j`. What I have used the `is` statement for the most is checking whether or not a value is `None`, as it is both the "Pythonic" way to do it, and because it looks nicer. Python is supposed to be both a functional and readable language, so you should use it as such.
 
 The next thing we should talk about is the logical operators: `not`, `and`, and `or`. Rather than using the symbols, Python shot for the most human readable way possible and just literally uses the English words for the code. The `not` operator is the same as `!` in every other language, and should be used as such. The `and` and `or` statements should be self explanatory. Here is an example of all three.
 
