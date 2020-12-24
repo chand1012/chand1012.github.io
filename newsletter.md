@@ -12,7 +12,7 @@ Be notified of when I write my posts! I don't write on a regular basis, so signi
 <form method="POST" action="https://i6v2f7.deta.dev/subscribe">
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
