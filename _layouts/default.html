@@ -4,10 +4,13 @@
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
     {% include meta.html %}
-
+    {% if page.bootstrap %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% endif %}
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    <meta name="google-site-verification" content="d8f0o6BXR6Ij8LV_1_mGDufqfgNvRJajrnwgjysKF_k" />
   </head>
 
   <body>
@@ -26,6 +29,7 @@
             <a href="{{ site.baseurl }}/about">About</a>
             <a href="{{ site.baseurl }}/sponsors">Sponsors</a>
             <a href="{{ site.baseurl }}/games">Games</a>
+            <a href="{{ site.baseurl }}/newsletter">Newsletter</a>
           </nav>
         </header>
       </div>
