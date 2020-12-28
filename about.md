@@ -39,7 +39,7 @@ I also occasionally participate in a cosplay group, called The Outsiders. Curren
 
 ### Contact Me
 
-[business@chand1012.net](mailto:business@chand1012.net)
+[chandler@chand1012.dev](mailto:chandler@chand1012.dev)
 
 ### Sponsor Me!
 
