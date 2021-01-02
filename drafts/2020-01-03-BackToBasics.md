@@ -19,8 +19,21 @@ float cash = 12.77;
 std::string name = "John Doe";
 ```
 
-The first word is the data type. Numbers generally come in three types: integers, floating point numbers, and complex numbers. Integers can only hold whole values, floating point numbers are effectively decimal numbers, but with varying levels of accuracy. The exact amount of accuracy can be affected by the language you are using, the compiler you are using, the architecture of your computer, and a few others. For the most part, numbers with type of `float` are not as accurate but use less memory. Numbers with the type `double` use twice as much memory as the `float` type, but have significantly more accuracy. Variations of these two types exist, but these are the two you will use the most. Complex numbers aren't really used by the average programmer.
+The first word is the data type. Numbers generally come in three types: integers, floating point numbers, and complex numbers. Integers can only hold whole values, floating point numbers are effectively decimal numbers, but with varying levels of accuracy. The exact amount of accuracy can be affected by the language you are using, the compiler you are using, the architecture of your computer, and a few others. For the most part, numbers with type of `float` are not as accurate but use less memory. Numbers with the type `double` use twice as much memory as the `float` type, but have significantly more accuracy. Variations of these two types exist, but these are the two you will use the most. Complex numbers aren't really used by the average programmer. Examples of statically typed programming languages are C/C++, Go, and Java.
 
 ### Dynamic Types
 
-Dynamically typed languages are those where the type of the variable is independent of scope or definition, and you can assign any type to any variable at any given time. This sound like a no-brainer, and it sounds like this would make 
+Dynamically typed languages are those where the type of the variable is independent of scope or definition, and you can assign any type to any variable at any given time. This sound like a no-brainer, and it sounds like this would make coding a lot easier, but in reality it doesn't. While it does make coding simpler and faster, it tends to make the language in question slower, and increases memory usage overall. Modern dynamically typed languages include Ruby, Python, and Lua. Here is an example with dynamic types in Python:
+
+```Python
+x = 12
+cash = 17.25
+name = "Mark Smith"
+
+# later on in the script
+cash = 5
+x = "No X"
+```
+
+
+
