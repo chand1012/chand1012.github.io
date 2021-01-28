@@ -18,8 +18,6 @@ This would be the command for Arch Linux.
 sudo pacman -Syu nodejs npm
 ```
 
-And this would be the command for Fedora.
-
 ```Bash
 ```
 
