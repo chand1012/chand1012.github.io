@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Transisioning from Python to Golang and why Python programmers should consider it.
+title: Transitioning from Python to Golang and why Python programmers should consider it.
 ---
 
 ## Intro

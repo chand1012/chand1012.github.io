@@ -43,13 +43,6 @@ class Dog:
     def __repr__(self):
         return f"({self.name}, {self.age})"
 
-    # This is a simple example
-    # of a class method
-    # this can also use input variables
-    # same as the init function
-    def bark(self):
-        print("Bark Bark")
-
     def set_parts(self, tails=1, ears=2, paws=4):
         self.parts = { # this sets the instance variable
             "tails": tails,
@@ -62,6 +55,10 @@ class Dog:
         if self.furry and not self.hypoallergenic: # using the instance variables within logic
             return True
         return False
+
+    @static_method # this is a method that can be 
+    def bark():  # called without instantiating a class
+        print('Bark Bark!')
 
 if __name__=="__main__": # Only run if the file is being explicitly ran as a script.
     # Here is how to use the class
@@ -76,6 +73,9 @@ if __name__=="__main__": # Only run if the file is being explicitly ran as a scr
 
     print(murphy)
     print(champion)
+
+    # you can also call static methods like this
+    Dog.bark()
 
 ```
 
@@ -106,4 +106,52 @@ if marley.is_purebred():
 In this example, I imported some of the previously written code. When you call the `import` statement, Python searches in a few places for your code. The places that it searches are called the `PYTHONPATH`, and your current directory is included. When you import another file in Python, the filename is omitted. Here is another import example:
 
 ```Python
-import 
+import os
+
+from dogs import Dog
+
+name = os.getenv('DOG_NAME')
+age = os.getenv('DOG_AGE')
+
+dog = Dog(name, age)
+```
+
+In this import example, the standard library module `os` was used. This module gives access to operating system functions while remaining platform agnostic, so functions will work on any OS. 
+
+The order for imports, while not enforced, usually goes like this:
+
+```Python
+import standard_library
+
+import pypi_module
+
+import local_module
+```
+
+To install a PyPI module, run the command `pip install <name>`. Common modules include [`requests`](https://pypi.org/project/requests/), a really simple HTTP REST request library, [Flask](https://flask.palletsprojects.com/en/1.1.x/), a popular and lightweight HTTP server framework, and  [Pillow](https://python-pillow.org/), an image manipulation library. Many, many more exist, and can be found on [PyPI](https://pypi.org/).
+
+Usually, when working with many Python packages, virtual environments are used. These make a project-level installation of packages, similar to how `npm` installs packages locally. See [here](https://virtualenv.pypa.io/en/latest/installation.html) for install instructions. 
+
+To use on Windows:
+```
+python -m venv env
+.\env\Scripts\activate
+```
+
+To use on MacOS & Linux:
+```
+python3 -m venv env
+source env/bin/activate
+```
+
+Then you can install packages as previously stated, but they will install to the virtual environment. To save all of the packages for later use on another system, run `pip freeze > requirements.txt`. To install packages from a fresh virtual environment:
+
+```
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+```
+
+All packages in `requirements.txt` will be installed to the virtual environment. This is equivalent Node's `package-lock.json` file and should be committed to your source control.
+
+This concludes Python For Programmers part 3.
